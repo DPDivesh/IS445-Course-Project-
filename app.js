@@ -21,9 +21,9 @@ console.log("test")
 
 function getInfo() {
   console.log("is it working");
-  var userNameInput = docuement.getElementById('userFName').value;
-  var userEmailInput = docuement.getElementById('userEmail').value;
-  var userPhoneInput = docuement.getElementById('userPNumber').value;
+  var userNameInput = document.getElementById('userFName').value;
+  var userEmailInput = document.getElementById('userEmail').value;
+  var userPNumberInput = document.getElementById('userPNumber').value;
 
   const db = firestore.collection("contactData");
     db.doc().set({
