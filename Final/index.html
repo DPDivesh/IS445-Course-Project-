@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+  <html>
+
+  <head>
+    <meta charset="utf-8">
+    <title>Contact Form</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"/>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-dark bg-primary">
+      <a href="#" class="navbar-brand">Contact Managment</a>
+    </nav>
+    <div class="container mt-3 card card-body p-4">
+      <h4 class="text-center">Contact Managment</h4>
+      <div class="form-group">
+        <label for="Name">Full Name
+        </label>
+        <input type="text" name="Full Name" id="userFName" class="form-control" />
+
+      </div>
+      <div class="form-group">
+        <label for="Name">Email
+        </label>
+        <input type="email" name="Email" id="userEmail" class="form-control" />
+
+      </div>
+      <div class="form-group">
+        <label for="Name">Phone Number
+        </label>
+        <input type="tel" name="Phone Number" id="userPNumber" class="form-control" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required />
+
+      </div>
+      <button id="submit" class="btn btn-primary">Submit</button>
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-firestore.js"></script>
+
+
+  </body>
+
+  </html>
