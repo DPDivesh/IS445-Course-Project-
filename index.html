@@ -3,19 +3,20 @@
 
   <head>
     <meta charset="utf-8">
-    <title>Contact Form</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"/>
+    <title>Contact Form</title>
   </head>
 
   <body>
     <nav class="navbar navbar-dark bg-primary">
       <a href="#" class="navbar-brand">Contact Managment</a>
     </nav>
+    <form>
     <div class="container mt-3 card card-body p-4">
       <h4 class="text-center">Contact Managment</h4>
       <div class="form-group">
         <label for="Name">Full Name</label>
-        <input type="text" name="Full Name" id="userFName" class="form-control" />
+        <input name="Full Name" type="text" id="userFName" class="form-control" />
 
       </div>
       <div class="form-group">
@@ -28,7 +29,7 @@
         <label for="Name">Phone Number
         </label>
         <input type="tel" name="Phone Number" id="userPNumber" class="form-control" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required />
-
+    </form>
       </div>
       <button type="button" class="btn btn-primary" onclick="getInfo()">Submit</button>
     </div>
