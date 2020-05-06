@@ -14,8 +14,7 @@
     <div class="container mt-3 card card-body p-4">
       <h4 class="text-center">Contact Managment</h4>
       <div class="form-group">
-        <label for="Name">Full Name
-        </label>
+        <label for="Name">Full Name</label>
         <input type="text" name="Full Name" id="userFName" class="form-control" />
 
       </div>
@@ -31,12 +30,11 @@
         <input type="tel" name="Phone Number" id="userPNumber" class="form-control" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required />
 
       </div>
-      <button id="submit" class="btn btn-primary">Submit</button>
+      <button type="button" class="btn btn-primary" onclick="getInfo()">Submit</button>
     </div>
     <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-firestore.js"></script>
     <script src="app.js"></script>
-
   </body>
 
   </html>

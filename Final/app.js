@@ -1,3 +1,4 @@
+console.log("is it getting read")
 var firebaseConfig = {
   apiKey: "AIzaSyB1ZbKz_5jUtKaJtga8QzwmS0geABoqIeA",
   authDomain: "is445-course-project-2d084.firebaseapp.com",
@@ -15,29 +16,29 @@ firebase.initializeApp(firebaseConfig);
 var firestore = firebase.firestore();
 
 //get DOM elements
-const submitButton = docuement.querySelector('#submit');
+console.log("test")
 
-let userName = docuement.querySelector('#userFName')
+function getInfo() {
+  console.log("is it working");
+  var userName = docuement.getElementById('userFName').value;
+  var userEmail = docuement.getElementById('userEmail').value;
+  var userPhone = docuement.getElementById('userPNumber').value;
 
-let userEmail = docuement.querySelector('#userEmail')
+  const db = firestore.collection("contactData");
 
-let userPhone = docuement.querySelector('#userPNumber')
-
-const db = firestore.collection("contactData");
-submitButton.addEventListener('click', function() {
-  let userName = userFName.value
-
-  let userEmail = userEmail.value
-
-  let userPhone = userPNumber.value
-  db.doc().set({
-      name: userNameInput,
-      email: userEmailInput,
-      phone: userPNumberInput
-    }).then(function() {
-      console.log("info saved to db");
-    })
-    .catch(function(error) {
-      console.log(error);
-    });
-});
+  submitButton.addEventListener('click', function() {
+    let userNameInput = userFName.value
+    let userEmailInput = userEmail.value
+    let userPNumberInput = userPNumber.value
+    db.doc().set({
+        name: userNameInput,
+        email: userEmailInput,
+        phone: userPNumberInput
+      }).then(function() {
+        console.log("info saved to db");
+      })
+      .catch(function(error) {
+        console.log(error);
+      });
+  });
+}
