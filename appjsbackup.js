@@ -20,9 +20,9 @@ console.log("test")
 
 const submitButton = docuement.getElementById('submit');
 
-let userName = docuement.querySelector('#userFName');
-let userEmail = docuement.querySelector('#userEmail');
-let userPhone = docuement.querySelector('#userPNumber');
+let userName = document.querySelector('#userFName');
+let userEmail = document.querySelector('#userEmail');
+let userPhone = document.querySelector('#userPNumber');
 
 const db = firestore.collection("contactData");
 

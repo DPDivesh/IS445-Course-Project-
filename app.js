@@ -17,23 +17,35 @@ firebase.initializeApp(firebaseConfig);
 var firestore = firebase.firestore();
 
 //get DOM elements
+
 console.log("test")
 
-function getInfo() {
-  console.log("is it working");
+$('form').submit(function(event){
+event.preventDefault()
+    alert('form was submitted!');
+    inputData(userFName,userEmail,userPNumber)
+});
+
+function inputData(){
   var userNameInput = document.getElementById('userFName').value;
   var userEmailInput = document.getElementById('userEmail').value;
   var userPNumberInput = document.getElementById('userPNumber').value;
 
-  const db = firestore.collection("contactData");
-    db.doc().set({
-        name: userNameInput,
-        email: userEmailInput,
-        phone: userPNumberInput
-      }).then(function() {
-        console.log("info saved to db");
-      })
-      .catch(function(error) {
-        console.log(error);
-      });
-  };
+console.log("it works???")
+console.log("is it working");
+const db = firestore.collection("contactData");
+  db.doc().set({
+      name: userNameInput,
+      email: userEmailInput,
+      phone: userPNumberInput
+    }).then(function() {
+      console.log("info saved to db");
+    })
+    .catch(function(error) {
+      console.log(error);
+    });
+};
+
+
+function logInfo() {
+}
