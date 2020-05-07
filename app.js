@@ -13,9 +13,11 @@ var firebaseConfig = {
 
 //initialize firebase
 firebase.initializeApp(firebaseConfig);
+
 //firestorage
 var firestore = firebase.firestore();
-
+var database = firebase.database();
+var ref = database.ref('contactData');
 //get DOM elements
 
 console.log("test")
@@ -44,8 +46,21 @@ const db = firestore.collection("contactData");
     .catch(function(error) {
       console.log(error);
     });
+
+    var data = {
+      name: userNameInput,
+      email: userEmailInput,
+      phone: userPNumberInput
+    }
+    ref.push(data);
 };
 
 
-function logInfo() {
+function getData(userNameInput,userEmailInput,userPNumberInput) {
+  console.log();
+}
+
+function errorData(err){
+  console.log("Error!")
+  console.log(err)
 }
