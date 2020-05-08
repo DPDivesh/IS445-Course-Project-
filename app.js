@@ -18,6 +18,8 @@ firebase.initializeApp(firebaseConfig);
 var firestore = firebase.firestore();
 var database = firebase.database();
 var ref = database.ref('contactData');
+ref.on ('value', getData, errorData);
+var contactData
 //get DOM elements
 
 console.log("test")
@@ -56,8 +58,21 @@ const db = firestore.collection("contactData");
 };
 
 
-function getData(userNameInput,userEmailInput,userPNumberInput) {
-  console.log();
+function getData(data) {
+  console.log(data.val());
+  var contactData= data.val();
+  var keys = Object.keys(contactData);
+  console.log(keys);
+  for (var i = 0; i < keys.length; i++){
+    var k = keys[i];
+    var name = contactData[k].name;
+    var email = contactData[k].email;
+    var phone = contactData[k].phone;
+    document.createElement("contacts").innerHTML = ( name + ': ' + " " + email+"," + phone );
+    var li = createElement('li',name + ': ' + " " + email+"," + phone );
+    li.parent('contacts')
+  }
+
 }
 
 function errorData(err){
