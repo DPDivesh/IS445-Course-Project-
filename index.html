@@ -11,60 +11,89 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
   <!-- Material Design Bootstrap -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.16.0/css/mdb.min.css" rel="stylesheet">
+  <link href="style.css" rel="stylesheet">
+
   <title>Contact Form</title>
 </head>
 
 <body>
+  <nav class="navbar navbar-expand-lg navbar-dark primary-color">
+    <a class="navbar-brand" href="#">Contact Managment</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
 
-      <!-- add user module -->
-      <section id="add-user-module" >
-          <button id="open-add-user-form-btn">+</button>
-          <form>
-              <h2>Add User</h2>
-              name:<br>
-              <input type='text' data-key='name' class='user-input'><br>
-              age:<br>
-              <input type='text' data-key='age' class='user-input'><br>
-              email:<br>
-              <input type='text' data-key='email' class='user-input'><br>
-              <button type='button' id="add-user-btn">add user</button>
-          </form>
-      </section>
+        <li class="nav-item active">
+          <a class="nav-link" href=index.html>Home<span class="sr-only">(current)</span></a>
+        </li>
+            </ul>
+          </nav>
+          <button onclick="myFunction()"class="btn btn-primary">New</button>
+          <button onclick="myFunctionIndex()"class="btn btn-primary">Index</button>
 
-      <!-- edit user module -->
-      <section id="edit-user-module">
-          <form>
-              <h2>Edit user</h2>
-              <input type="hidden" class="edit-userid">
-              name:<br>
-              <input type='text' data-key='name' class='edit-user-input'><br>
-              age:<br>
-              <input type='text' data-key='age' class='edit-user-input'><br>
-              email:<br>
-              <input type='text' data-key='email' class='edit-user-input'><br>
-              <button type='button' id="edit-user-btn">save</button>
-          </form>
-      </section>
+          <h1 class="text-center">Contact Managment</h1>
+
+    <!-- add user module -->
+    <div id="myDIV">
+    <section id="add-user-module" >
+      <form name="myForm"  method="post">
+          <div class="container mt-3 card card-body p-4">
+            <h4 class="text-center">Add New User</h4>
+            <div class="form-group">
+              <label for="Name">Full Name</label>
+            <input name="Full Name" type="text" id="name" name="name"   class="form-control" required />
+          </div>
+          <div class="form-group">
+            <label for="Name">Email
+            </label>
+            <input type="email" name="Email" id="email" class="form-control" required />
+
+          </div>
+          <div class="form-group">
+            <label for="Name">Phone Number
+            </label>
+            <input type="tel" name="Phone Number" id="phone number" class="form-control" pattern="[2-9]{3}[0-9]{3}[0-9]{4}" placeholder="Ex:2234578910" required />
+
+        </form>
+        </div>
+        <button type="submit" type="button" class="btn btn-primary" id="add-user-btn">Submit</button>
+
+    </section>
+  </div>
+<div id="myBtn">
+    <section id="edit-user-module">
+        <form>
+          <div class="container mt-3 card card-body p-4">
+
+            <h4 class="text-center">Edit user</h4>
+
+            <label for="Name">Full Name</label>
+            <input type="hidden" class="edit-userid">
+            <input type='text' id='name' class='edit-user-input'>
+            <label for="Name">Email</label>
+            <input type='text' id='email' class='edit-user-input'>
+            <label for="Name">Phone Number</label>
+            <input type='text' id='phone number' class='edit-user-input'>
+            <button type='button' id="edit-user-btn" class="btn btn-primary">Edit</button>
+            <button type='button'onclick="cancelBtn()"  class="btn btn-primary" >Cancel</button>
 
 
-      <!-- show user module -->
-      <ul id="user-list"></ul>
-      <div id="user-detail"></div>
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.16.0/js/mdb.min.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-app.js"></script>
+        </form>
+      </div>
+    </section>
+  </div>
+  <div id="myDIVIndex">
 
-  <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
-  <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-analytics.js"></script>
+  <div class="container mt-3 card card-body p-4">
 
-  <!-- Add Firebase products that you want to use -->
-  <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-auth.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-firestore.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-database.js"></script>
+    <ul id="user-list"></ul>
+    <div id="user-detail"></div>
+</div>
+    <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
+    <script type="text/javascript" src="script.js"></script>
 
-  <script src="app.js"></script>
-</body>
+  </body>
 
 </html>
