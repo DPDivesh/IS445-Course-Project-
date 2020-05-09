@@ -58,20 +58,20 @@ function readUserData() {
 
       // edit icon
       let editIconUI = document.createElement("span");
-      editIconUI.class = "edit-user";
-      editIconUI.innerHTML = " ✎";
+      editIconUI.class = "btn btn-primary";
+      editIconUI.innerHTML = " Edit ";
       editIconUI.setAttribute("userid", key);
       editIconUI.addEventListener("click", editButtonClicked)
 
       // delete icon
       let deleteIconUI = document.createElement("span");
-      deleteIconUI.class = "delete-user";
-      deleteIconUI.innerHTML = " ☓";
+      deleteIconUI.class = "btn btn-primary";
+      deleteIconUI.innerHTML = " Delete " ;
       deleteIconUI.setAttribute("userid", key);
       deleteIconUI.addEventListener("click", deleteButtonClicked)
 
       let describeIconUI = document.createElement("span");
-      describeIconUI.class = "describe-user";
+      describeIconUI.class = "btn btn-primary";
       describeIconUI.innerHTML = " Describe";
       describeIconUI.setAttribute("userid", key);
       describeIconUI.addEventListener("click", userClicked)
