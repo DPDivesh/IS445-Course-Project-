@@ -1,0 +1,15 @@
+/* css */
+ul {
+  list-style: none;
+  padding: 0;
+}
+.testClass {
+  padding: 5px 10px;
+  background-color: white;
+  border: 1px solid #DDDDDD;
+}
+
+.cancelBtn{
+  color: red;
+  background-color: red;
+}
