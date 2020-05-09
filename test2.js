@@ -18,6 +18,7 @@ const dbRef = firebase.database().ref();
 const usersRef = dbRef.child('users');
 
 myFunction();
+myFunctionIndex();
 readUserData();
 document.getElementById('edit-user-module').style.display = "block";
 cancelBtn();
@@ -33,6 +34,15 @@ function cancelBtn() {
 
 function myFunction() {
   var x = document.getElementById("myDIV");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+
+function myFunctionIndex() {
+  var x = document.getElementById("myDIVIndex");
   if (x.style.display === "none") {
     x.style.display = "block";
   } else {
@@ -93,8 +103,14 @@ function readUserData() {
 
 }
 
-
-
+function deleteConfirmation(){
+  console.log("Clicked")
+  if (confirm("Are you sure?") == true) {
+    deleteButtonClicked();
+  } else {
+    return false;
+  }
+}
 function userClicked(e) {
 
 
@@ -175,14 +191,20 @@ function myValidation() {
 }
 
 function deleteButtonClicked(e) {
+  if (confirm("Are you sure?") == true) {
 
-  e.stopPropagation();
+  console.log("clicked")
+    e.stopPropagation();
 
-  var userID = e.target.getAttribute("userid");
+    var userID = e.target.getAttribute("userid");
 
-  const userRef = dbRef.child('users/' + userID);
+    const userRef = dbRef.child('users/' + userID);
 
-  userRef.remove();
+    userRef.remove();
+
+  } else {
+    return false;
+  }
 
 }
 

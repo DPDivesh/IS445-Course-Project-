@@ -31,7 +31,7 @@
             </ul>
           </nav>
           <button onclick="myFunction()"class="btn btn-primary">New</button>
-          <button onclick="myFunction()"class="btn btn-primary">Index</button>
+          <button onclick="myFunctionIndex()"class="btn btn-primary">Index</button>
 
           <h1 class="text-center">Contact Managment</h1>
 
@@ -67,7 +67,7 @@
         <form>
           <div class="container mt-3 card card-body p-4">
 
-            <h2>Edit user</h2>
+            <h4 class="text-center">Edit user</h4>
 
             <label for="Name">Full Name</label>
             <input type="hidden" class="edit-userid">
@@ -84,12 +84,13 @@
       </div>
     </section>
   </div>
+  <div id="myDIVIndex">
 
   <div class="container mt-3 card card-body p-4">
 
     <ul id="user-list"></ul>
     <div id="user-detail"></div>
-
+</div>
     <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
     <script type="text/javascript" src="test2.js"></script>
 
