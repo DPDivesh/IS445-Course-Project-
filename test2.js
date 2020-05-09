@@ -1,5 +1,3 @@
-
-
 // Initialize Firebase
 var config = {
   apiKey: "AIzaSyB1ZbKz_5jUtKaJtga8QzwmS0geABoqIeA",
@@ -20,9 +18,9 @@ const dbRef = firebase.database().ref();
 const usersRef = dbRef.child('users');
 
 myFunction();
-	readUserData();
-  document.getElementById('edit-user-module').style.display = "none";
-
+readUserData();
+document.getElementById('edit-user-module').style.display = "block";
+cancelBtn();
 
 function cancelBtn() {
   var x = document.getElementById("myBtn");
@@ -44,46 +42,54 @@ function myFunction() {
 
 function readUserData() {
 
-	const userListUI = document.getElementById("user-list");
+  const userListUI = document.getElementById("user-list");
 
-	usersRef.on("value", snap => {
+  usersRef.on("value", snap => {
 
-		userListUI.innerHTML = ""
+    userListUI.innerHTML = ""
 
-		snap.forEach(childSnap => {
+    snap.forEach(childSnap => {
 
-			let key = childSnap.key,
-				value = childSnap.val()
+      let key = childSnap.key,
+        value = childSnap.val()
 
-			let $li = document.createElement("li");
-      $li.className="testClass";
+      let $li = document.createElement("li");
+      $li.className = "testClass";
 
-			// edit icon
-			let editIconUI = document.createElement("span");
-			editIconUI.class = "edit-user";
-			editIconUI.innerHTML = " ✎";
-			editIconUI.setAttribute("userid", key);
-			editIconUI.addEventListener("click", editButtonClicked)
+      // edit icon
+      let editIconUI = document.createElement("span");
+      editIconUI.class = "edit-user";
+      editIconUI.innerHTML = " ✎";
+      editIconUI.setAttribute("userid", key);
+      editIconUI.addEventListener("click", editButtonClicked)
 
-			// delete icon
-			let deleteIconUI = document.createElement("span");
-			deleteIconUI.class = "delete-user";
-			deleteIconUI.innerHTML = " ☓";
-			deleteIconUI.setAttribute("userid", key);
-			deleteIconUI.addEventListener("click", deleteButtonClicked)
+      // delete icon
+      let deleteIconUI = document.createElement("span");
+      deleteIconUI.class = "delete-user";
+      deleteIconUI.innerHTML = " ☓";
+      deleteIconUI.setAttribute("userid", key);
+      deleteIconUI.addEventListener("click", deleteButtonClicked)
 
-			$li.innerHTML = value.name;
-			$li.append(editIconUI);
-			$li.append(deleteIconUI);
-
-			$li.setAttribute("user-key", key);
-			$li.addEventListener("click", userClicked)
-			userListUI.append($li);
-
- 		});
+      let describeIconUI = document.createElement("span");
+      describeIconUI.class = "describe-user";
+      describeIconUI.innerHTML = " Describe";
+      describeIconUI.setAttribute("userid", key);
+      describeIconUI.addEventListener("click", userClicked)
+      describeIconUI.setAttribute("user-key", key);
+      describeIconUI.addEventListener("click", userClicked)
 
 
-	})
+      $li.innerHTML = value.name;
+      $li.append(editIconUI);
+      $li.append(deleteIconUI);
+      $li.append(describeIconUI);
+
+      userListUI.append($li);
+
+    });
+
+
+  })
 
 }
 
@@ -92,22 +98,22 @@ function readUserData() {
 function userClicked(e) {
 
 
-		var userID = e.target.getAttribute("user-key");
+  var userID = e.target.getAttribute("user-key");
 
-		const userRef = dbRef.child('users/' + userID);
-		const userDetailUI = document.getElementById("user-detail");
+  const userRef = dbRef.child('users/' + userID);
+  const userDetailUI = document.getElementById("user-detail");
 
-		userRef.on("value", snap => {
+  userRef.on("value", snap => {
 
-			userDetailUI.innerHTML = ""
+    userDetailUI.innerHTML = ""
 
-			snap.forEach(childSnap => {
-				var $p = document.createElement("p");
-				$p.innerHTML = childSnap.key  + " - " +  childSnap.val();
-				userDetailUI.append($p);
-			})
+    snap.forEach(childSnap => {
+      var $p = document.createElement("p");
+      $p.innerHTML = childSnap.key + " - " + childSnap.val();
+      userDetailUI.append($p);
+    })
 
-		});
+  });
 
 
 }
@@ -123,118 +129,114 @@ addUserBtnUI.addEventListener("click", addUserBtnClicked)
 
 function addUserBtnClicked() {
 
-  var x=document.forms["myForm"]["name"].value;
-   if(x=="")
-   {
-     alert("must input info");
+  var x = document.forms["myForm"]["name"].value;
+  if (x == "") {
+    alert("must input info");
     return false;
-  }else {
-      const usersRef = dbRef.child('users');
+  } else {
+    const usersRef = dbRef.child('users');
 
-    	const addUserInputsUI = document.getElementsByClassName("form-control");
+    const addUserInputsUI = document.getElementsByClassName("form-control");
 
-        let newUser = {};
-
-
-        for (let i = 0, len = addUserInputsUI.length; i < len; i++) {
-
-            let key = addUserInputsUI[i].getAttribute('id');
-            let value = addUserInputsUI[i].value;
-            newUser[key] = value;
-        }
-
-    	usersRef.push(newUser)
+    let newUser = {};
 
 
-       console.log(myPro)
+    for (let i = 0, len = addUserInputsUI.length; i < len; i++) {
 
+      let key = addUserInputsUI[i].getAttribute('id');
+      let value = addUserInputsUI[i].value;
+      newUser[key] = value;
     }
+
+    usersRef.push(newUser)
+
+
+    console.log(myPro)
+
+  }
 
 
 
 
 }
 
-function myValidation()
-{
-  var x=document.forms["myForm"]["name"].value;
-   if(x="")
-   {
-     alert("must input info");
+function myValidation() {
+  var x = document.forms["myForm"]["name"].value;
+  if (x = "") {
+    alert("must input info");
     return false;
-   }
-   {
-      alert("Oops! Validation failed!");
-      returnToPreviousPage();
-      return false;
-   }
-   alert("Validations successful!");
-   return true;
+  } {
+    alert("Oops! Validation failed!");
+    returnToPreviousPage();
+    return false;
+  }
+  alert("Validations successful!");
+  return true;
 }
 
 function deleteButtonClicked(e) {
 
-		e.stopPropagation();
+  e.stopPropagation();
 
-		var userID = e.target.getAttribute("userid");
+  var userID = e.target.getAttribute("userid");
 
-		const userRef = dbRef.child('users/' + userID);
+  const userRef = dbRef.child('users/' + userID);
 
-		userRef.remove();
+  userRef.remove();
 
 }
 
 
 
 function editButtonClicked(e) {
+cancelBtn();
+  document.getElementById('edit-user-module').style.display = "block";
 
-	document.getElementById('edit-user-module').style.display = "block";
+  document.querySelector(".edit-userid").value = e.target.getAttribute("userid");
 
-	document.querySelector(".edit-userid").value = e.target.getAttribute("userid");
+  const userRef = dbRef.child('users/' + e.target.getAttribute("userid"));
 
-	const userRef = dbRef.child('users/' + e.target.getAttribute("userid"));
-
-	const editUserInputsUI = document.querySelectorAll(".edit-user-input");
-
-
-	userRef.on("value", snap => {
-
-		for(var i = 0, len = editUserInputsUI.length; i < len; i++) {
-
-			var key = editUserInputsUI[i].getAttribute("id");
-					editUserInputsUI[i].value = snap.val()[key];
-		}
-
-	});
+  const editUserInputsUI = document.querySelectorAll(".edit-user-input");
 
 
+  userRef.on("value", snap => {
+
+    for (var i = 0, len = editUserInputsUI.length; i < len; i++) {
+
+      var key = editUserInputsUI[i].getAttribute("id");
+      editUserInputsUI[i].value = snap.val()[key];
+    }
+
+  });
 
 
-	const saveBtn = document.querySelector("#edit-user-btn");
-	saveBtn.addEventListener("click", saveUserBtnClicked)
+
+
+  const saveBtn = document.querySelector("#edit-user-btn");
+  saveBtn.addEventListener("click", saveUserBtnClicked)
 }
 
 
 function saveUserBtnClicked(e) {
 
-	const userID = document.querySelector(".edit-userid").value;
-	const userRef = dbRef.child('users/' + userID);
+  const userID = document.querySelector(".edit-userid").value;
+  const userRef = dbRef.child('users/' + userID);
 
-	var editedUserObject = {}
+  var editedUserObject = {}
 
-	const editUserInputsUI = document.querySelectorAll(".edit-user-input");
+  const editUserInputsUI = document.querySelectorAll(".edit-user-input");
 
-	editUserInputsUI.forEach(function(textField) {
-		let key = textField.getAttribute("id");
-		let value = textField.value;
-  		editedUserObject[textField.getAttribute("id")] = textField.value
-	});
+  editUserInputsUI.forEach(function(textField) {
+    let key = textField.getAttribute("id");
+    let value = textField.value;
+    editedUserObject[textField.getAttribute("id")] = textField.value
+  });
 
 
 
-	userRef.update(editedUserObject);
+  userRef.update(editedUserObject);
 
-	document.getElementById('edit-user-module').style.display = "none";
+  document.getElementById('edit-user-module').style.display = "none";
 
 
 }
