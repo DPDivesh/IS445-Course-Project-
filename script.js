@@ -167,7 +167,7 @@ function addUserBtnClicked() {
 
   } else {
 
-    alert("must input info");
+    alert("Please input correct information.");
     return true;
 
 
@@ -243,6 +243,10 @@ cancelBtn();
 
 
 function saveUserBtnClicked(e) {
+  var x = document.forms["myEditForm"]["name"].checkValidity();
+  var y = document.forms["myEditForm"]["Email"].checkValidity();
+  var z = document.forms["myEditForm"]["phone number"].checkValidity();
+  if (x == true && y==true && z==true) {
 
   const userID = document.querySelector(".edit-userid").value;
   const userRef = dbRef.child('users/' + userID);
@@ -262,6 +266,12 @@ function saveUserBtnClicked(e) {
   userRef.update(editedUserObject);
 
   document.getElementById('edit-user-module').style.display = "none";
+}
+else {
 
+      alert("Please input correct information.");
+      return true;
+
+}
 
 }

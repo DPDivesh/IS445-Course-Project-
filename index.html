@@ -64,19 +64,19 @@
   </div>
 <div id="myBtn">
     <section id="edit-user-module">
-        <form>
+        <form name="myEditForm" method="post">
           <div class="container mt-3 card card-body p-4">
 
             <h4 class="text-center">Edit user</h4>
 
             <label for="Name">Full Name</label>
             <input type="hidden" class="edit-userid">
-            <input type='text' id='name' class='edit-user-input'>
+            <input type='text' id='name' name="name" class='edit-user-input' placeholder="Enter name" required />
             <label for="Name">Email</label>
-            <input type='text' id='email' class='edit-user-input'>
+            <input type='text' id='email' name="Email" class='edit-user-input'placeholder="Enter e-mail" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required />
             <label for="Name">Phone Number</label>
-            <input type='text' id='phone number' class='edit-user-input'>
-            <button type='button' id="edit-user-btn" class="btn btn-primary">Edit</button>
+            <input type='text' id='phone number' class='edit-user-input'pattern="[2-9]{3}[0-9]{3}[0-9]{4}" placeholder="Ex:2234578910" required/>
+            <button type='submit' type="button" class="btn btn-primary" id="edit-user-btn">Edit</button>
             <button type='button'onclick="cancelBtn()"  class="btn btn-primary" >Cancel</button>
 
 
