@@ -32,3 +32,7 @@ span{
       cursor: pointer;
       margin: 5px;
 }
+
+.button-color{
+  background-color: red !important;
+}

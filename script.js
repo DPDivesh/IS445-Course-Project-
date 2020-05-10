@@ -17,11 +17,22 @@ firebase.initializeApp(config);
 const dbRef = firebase.database().ref();
 const usersRef = dbRef.child('users');
 
-myFunction();
-myFunctionIndex();
-readUserData();
-document.getElementById('edit-user-module').style.display = "block";
-cancelBtn();
+
+var functionCall = (function() {
+    var executed = false;
+    return function() {
+        if (!executed) {
+            executed = true;
+            myFunction();
+            myFunctionIndex();
+            readUserData();
+            document.getElementById('edit-user-module').style.display = "block";
+            cancelBtn();
+        }
+    };
+})();
+functionCall();
+
 
 function cancelBtn() {
   var x = document.getElementById("myBtn");
@@ -67,32 +78,32 @@ function readUserData() {
       $li.className = "testClass";
 
       // edit icon
-      let editIconUI = document.createElement("span");
-      editIconUI.class = "btn btn-primary";
-      editIconUI.innerHTML = " Edit ";
-      editIconUI.setAttribute("userid", key);
-      editIconUI.addEventListener("click", editButtonClicked)
+      let editButton = document.createElement("span");
+      editButton.class = "btn btn-primary";
+      editButton.innerHTML = " Edit ";
+      editButton.setAttribute("userid", key);
+      editButton.addEventListener("click", editButtonClicked)
 
       // delete icon
-      let deleteIconUI = document.createElement("span");
-      deleteIconUI.class = "btn btn-primary";
-      deleteIconUI.innerHTML = " Delete " ;
-      deleteIconUI.setAttribute("userid", key);
-      deleteIconUI.addEventListener("click", deleteButtonClicked)
+      let deleteButton = document.createElement("span");
+      deleteButton.class = "btn btn-primary";
+      deleteButton.innerHTML = " Delete " ;
+      deleteButton.setAttribute("userid", key);
+      deleteButton.addEventListener("click", deleteButtonClicked)
 
-      let describeIconUI = document.createElement("span");
-      describeIconUI.class = "btn btn-primary";
-      describeIconUI.innerHTML = " Describe";
-      describeIconUI.setAttribute("userid", key);
-      describeIconUI.addEventListener("click", userClicked)
-      describeIconUI.setAttribute("user-key", key);
-      describeIconUI.addEventListener("click", userClicked)
+      let describeButton = document.createElement("span");
+      describeButton.class = "btn btn-primary";
+      describeButton.innerHTML = " Describe";
+      describeButton.setAttribute("userid", key);
+      describeButton.addEventListener("click", userClicked)
+      describeButton.setAttribute("user-key", key);
+      describeButton.addEventListener("click", userClicked)
 
 
       $li.innerHTML = value.name;
-      $li.append(editIconUI);
-      $li.append(deleteIconUI);
-      $li.append(describeIconUI);
+      $li.append(editButton);
+      $li.append(deleteButton);
+      $li.append(describeButton);
 
       userListUI.append($li);
 
