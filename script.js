@@ -145,11 +145,10 @@ addUserBtnUI.addEventListener("click", addUserBtnClicked)
 
 function addUserBtnClicked() {
 
-  var x = document.forms["myForm"]["name"].value;
-  if (x == "") {
-    alert("must input info");
-    return false;
-  } else {
+  var x = document.forms["myForm"]["name"].checkValidity();
+  var y = document.forms["myForm"]["Email"].checkValidity();
+  var z = document.forms["myForm"]["Phone Number"].checkValidity();
+  if (x == true && y==true && z==true) {
     const usersRef = dbRef.child('users');
 
     const addUserInputsUI = document.getElementsByClassName("form-control");
@@ -166,10 +165,14 @@ function addUserBtnClicked() {
 
     usersRef.push(newUser)
 
+  } else {
 
-    console.log(myPro)
+    alert("must input info");
+    return true;
+
 
   }
+  document.getElementById('read-user-data').style.display = "block";
 
 
 

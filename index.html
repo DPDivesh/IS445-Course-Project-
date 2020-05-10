@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html>
 
 <head>
@@ -43,12 +43,12 @@
             <h4 class="text-center">Add New User</h4>
             <div class="form-group">
               <label for="Name">Full Name</label>
-            <input name="Full Name" type="text" id="name" name="name"   class="form-control" required />
+            <input name="Full Name" type="text" id="name" name="name"   class="form-control" placeholder="Enter name" required />
           </div>
           <div class="form-group">
             <label for="Name">Email
             </label>
-            <input type="email" name="Email" id="email" class="form-control" required />
+            <input type="email" name="Email" id="email" class="form-control"  placeholder="Enter e-mail" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required />
 
           </div>
           <div class="form-group">
@@ -85,11 +85,13 @@
     </section>
   </div>
   <div id="myDIVIndex">
+<secion id="read-user-data">
 
-  <div class="container mt-3 card card-body p-4">
+<div class="container mt-3 card card-body p-4">
 
     <ul id="user-list"></ul>
     <div id="user-detail"></div>
+  </section>
 </div>
     <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
     <script type="text/javascript" src="script.js"></script>
